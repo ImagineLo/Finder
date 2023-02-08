@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <a id="myLink" href="#">Click Here</a>
+
+<script>
+  document.getElementById("myLink").addEventListener("click", function(event) {
+    event.preventDefault();
+    var date = new Date();
+    fetch('https://api.ipify.org?format=json')
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(data) {
+        var userInfo = "User clicked on " + date.toString() + " from IP address: " + data.ip;
+        console.log(userInfo);
+        // You can store the `userInfo` in a database or send it to a server for processing.
+      });
+  });
+</script>
